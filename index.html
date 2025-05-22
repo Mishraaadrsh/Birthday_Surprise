@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Kitten ❤</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom right, #ffccff, #ffe6e6);
       color: #333;
       overflow-x: hidden;
-      position: relative;
     }
+
     header {
       background-color: #ff66b2;
       color: white;
@@ -20,44 +21,53 @@
       text-align: center;
       font-size: 2em;
     }
+
     nav {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 10px;
       background-color: #ff99cc;
       padding: 10px;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      padding: 10px 14px;
+      background: #ff66a3;
+      border-radius: 6px;
+      transition: background 0.3s;
     }
+
     nav a:hover {
-      text-decoration: underline;
+      background: #ff4d94;
     }
+
     section {
-      padding: 40px;
-      max-width: 800px;
+      padding: 20px;
+      max-width: 100%;
       margin: auto;
       text-align: center;
     }
-    .heart {
-      color: red;
-      font-size: 2rem;
+
+    img {
+      width: 95%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin: 10px auto;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       background-color: #ff99cc;
       color: white;
+      font-size: 1em;
     }
-    img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      margin-bottom: 20px;
-    }
-    /* Welcome Overlay */
+
     #overlay {
       position: fixed;
       top: 0;
@@ -71,46 +81,43 @@
       z-index: 9999;
       flex-direction: column;
       text-align: center;
+      padding: 20px;
     }
+
+    #overlay button {
+      margin-top: 20px;
+      padding: 14px 28px;
+      font-size: 1.2em;
+      background-color: #ff66b2;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #overlay button:hover {
+      background-color: #ff4d94;
+    }
+
     .typewriter h1 {
       overflow: hidden;
       border-right: .15em solid #ff3385;
       white-space: nowrap;
-      margin: 0 auto;
       letter-spacing: .1em;
       animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
     }
+
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
     }
+
     @keyframes blink-caret {
       from, to { border-color: transparent }
       50% { border-color: #ff3385; }
     }
 
-    /* Fireworks */
-    .firework {
-      position: absolute;
-      border-radius: 50%;
-      width: 8px;
-      height: 8px;
-      background: #ff3385;
-      animation: explode 0.8s ease-out forwards;
-      pointer-events: none;
-    }
-    @keyframes explode {
-      0% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(10);
-      }
-    }
-
-    /* Falling hearts */
     .falling-heart {
       position: fixed;
       top: -50px;
@@ -119,16 +126,67 @@
       animation: fall linear forwards;
       z-index: 999;
     }
+
     @keyframes fall {
       to {
         transform: translateY(100vh);
         opacity: 0;
       }
     }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.6em;
+        padding: 15px;
+      }
+
+      nav a {
+        padding: 8px 12px;
+        font-size: 0.95em;
+      }
+
+      section h2 {
+        font-size: 1.3em;
+      }
+
+      .typewriter h1 {
+        font-size: 1.3em;
+      }
+
+      #overlay button {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
+
+      footer {
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      img {
+        max-width: 90%;
+      }
+
+      section {
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Welcome Screen -->
   <div id="overlay">
     <div class="typewriter">
       <h1>🎁 A Little Surprise for You 🎉</h1>
@@ -136,13 +194,11 @@
     <button onclick="startExperience()">Start with Music 🎵</button>
   </div>
 
-  <!-- Background Music -->
   <audio id="birthdayAudio" loop>
     <source src="1.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Main Content -->
   <header>
     Happy Birthday, My Kitten! 🎉❤
   </header>
@@ -155,8 +211,7 @@
 
   <section id="home">
     <h2>To My Sweetest Love</h2>
-    <p>Today is all about you, my beautiful Kitten. I’m so lucky to celebrate your special day with you. 🥰</p>
-    <p>Here’s a little surprise, just for you. I love you beyond words. 💖</p>
+    <p>Today is all about you, my beautiful Kitten. 🥰<br>Here’s a little surprise, just for you. 💖</p>
   </section>
 
   <section id="memories">
@@ -168,17 +223,17 @@
   <section id="letter">
     <h2>A Letter From My Heart</h2>
     <p>My dearest Kitten,<br><br>
-    Every day with you feels like a dream I never want to wake up from. Your smile lights up my world, and your love fills my heart in ways I never imagined possible.<br><br>
-    On your birthday, I just want to say thank you—for your kindness, your laughter, and your endless love. I promise to cherish you always. ❤<br><br>
+    Every day with you feels like a dream I never want to wake up from. Your smile lights up my world.<br><br>
+    On your birthday, thank you for your love. I promise to cherish you always. ❤<br><br>
     Love forever,<br>Your Baby</p>
   </section>
 
   <section id="gallery">
     <h2>Your Gallery</h2>
-    <p>Here are some of our most cherished moments together 💕</p>
-    <img src="photo2.jpg" alt="Cute moment 3">
-    <img src="photo3.jpg" alt="Cute moment 4">
-    <img src="photo4.jpg" alt="Cute moment 5">
+    <p>Here are some of your most cherished moments 💕</p>
+    <img src="photo2.jpg" alt="Moment 1">
+    <img src="photo3.jpg" alt="Moment 2">
+    <img src="photo4.jpg" alt="Moment 3">
   </section>
 
   <footer>
@@ -195,7 +250,6 @@
       startFallingHearts();
     }
 
-    // Falling hearts on start
     function startFallingHearts() {
       setInterval(() => {
         const heart = document.createElement('div');
@@ -208,7 +262,6 @@
       }, 300);
     }
 
-    // Floating hearts on click
     document.addEventListener('click', (e) => {
       const heart = document.createElement('div');
       heart.innerText = '💖';
@@ -220,41 +273,6 @@
       heart.style.animation = 'floatUp 1s ease-out forwards';
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 1000);
-    });
-
-    // Floating animation
-    const style = document.createElement('style');
-    style.innerHTML = `
-      @keyframes floatUp {
-        to {
-          transform: translateY(-100px);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    // Fireworks
-    function triggerFirework(x, y) {
-      for (let i = 0; i < 10; i++) {
-        const dot = document.createElement("div");
-        dot.className = "firework";
-        dot.style.left = `${x}px`;
-        dot.style.top = `${y}px`;
-        dot.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
-        document.body.appendChild(dot);
-        setTimeout(() => dot.remove(), 800);
-      }
-    }
-
-    window.addEventListener("scroll", () => {
-      const x = window.innerWidth * Math.random();
-      const y = window.scrollY + window.innerHeight * Math.random() * 0.5;
-      triggerFirework(x, y);
-    });
-
-    document.addEventListener("click", e => {
-      triggerFirework(e.pageX, e.pageY);
     });
   </script>
 </body>
