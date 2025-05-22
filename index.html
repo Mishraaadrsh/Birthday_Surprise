@@ -60,6 +60,19 @@
       margin: 10px auto;
     }
 
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .gallery-container img {
+      width: 95%;
+      max-width: 250px;
+      margin: 10px;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -231,14 +244,15 @@
   <section id="gallery">
     <h2>Your Gallery</h2>
     <p>Here are some of your most cherished moments 💕</p>
-    <img src="photo2.jpg" alt="Moment 1">
-    <img src="photo3.jpg" alt="Moment 2">
-    <img src="photo4.jpg" alt="Moment 3">
-    <img src="photo5.jpg" alt="Moment 4">
+    <div class="gallery-container">
+      <img src="photo2.jpg" alt="Moment 1">
+      <img src="photo3.jpg" alt="Moment 2">
+      <img src="photo4.jpg" alt="Moment 3">
+    </div>
   </section>
 
   <footer>
-    Made with endless love for Kitten ❤ | Happy Birthday!
+    Made with endless love for Kitten From Aadrsh..!With all my love. ❤ | Happy Birthday Raja!
   </footer>
 
   <script>
