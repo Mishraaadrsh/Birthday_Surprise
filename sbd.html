@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Kitten ❤</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #ffccff, #ffe6e6);
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+    header {
+      background-color: #ff66b2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #ff99cc;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    .heart {
+      color: red;
+      font-size: 2rem;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ff99cc;
+      color: white;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+    /* Welcome Overlay */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+      text-align: center;
+    }
+    .typewriter h1 {
+      overflow: hidden;
+      border-right: .15em solid #ff3385;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .1em;
+      animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #ff3385; }
+    }
+
+    /* Fireworks */
+    .firework {
+      position: absolute;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      background: #ff3385;
+      animation: explode 0.8s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes explode {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(10);
+      }
+    }
+
+    /* Falling hearts */
+    .falling-heart {
+      position: fixed;
+      top: -50px;
+      color: red;
+      font-size: 24px;
+      animation: fall linear forwards;
+      z-index: 999;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Screen -->
+  <div id="overlay">
+    <div class="typewriter">
+      <h1>🎁 A Little Surprise for You 🎉</h1>
+    </div>
+    <button onclick="startExperience()">Start with Music 🎵</button>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="birthdayAudio" loop>
+    <source src="1.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Main Content -->
+  <header>
+    Happy Birthday, My Kitten! 🎉❤
+  </header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#memories">Memories</a>
+    <a href="#letter">Love Letter</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
+
+  <section id="home">
+    <h2>To My Sweetest Love</h2>
+    <p>Today is all about you, my beautiful Kitten. I’m so lucky to celebrate your special day with you. 🥰</p>
+    <p>Here’s a little surprise, just for you. I love you beyond words. 💖</p>
+  </section>
+
+  <section id="memories">
+    <h2>Our Memories Together</h2>
+    <p>From our first laugh to our late-night talks, every moment with you is a treasure.</p>
+    <img src="photo1.jpg" alt="Our memories together">
+  </section>
+
+  <section id="letter">
+    <h2>A Letter From My Heart</h2>
+    <p>My dearest Kitten,<br><br>
+    Every day with you feels like a dream I never want to wake up from. Your smile lights up my world, and your love fills my heart in ways I never imagined possible.<br><br>
+    On your birthday, I just want to say thank you—for your kindness, your laughter, and your endless love. I promise to cherish you always. ❤<br><br>
+    Love forever,<br>Your Baby</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Your Gallery</h2>
+    <p>Here are some of our most cherished moments together 💕</p>
+    <img src="photo2.jpg" alt="Cute moment 3">
+    <img src="photo3.jpg" alt="Cute moment 4">
+    <img src="photo4.jpg" alt="Cute moment 5">
+  </section>
+
+  <footer>
+    Made with endless love for Kitten ❤ | Happy Birthday!
+  </footer>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const audio = document.getElementById('birthdayAudio');
+
+    function startExperience() {
+      overlay.style.display = 'none';
+      audio.play().catch(e => console.log("Autoplay blocked:", e));
+      startFallingHearts();
+    }
+
+    // Falling hearts on start
+    function startFallingHearts() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'falling-heart';
+        heart.innerText = '❤️';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }, 300);
+    }
+
+    // Floating hearts on click
+    document.addEventListener('click', (e) => {
+      const heart = document.createElement('div');
+      heart.innerText = '💖';
+      heart.style.position = 'absolute';
+      heart.style.left = e.pageX + 'px';
+      heart.style.top = e.pageY + 'px';
+      heart.style.fontSize = '24px';
+      heart.style.pointerEvents = 'none';
+      heart.style.animation = 'floatUp 1s ease-out forwards';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1000);
+    });
+
+    // Floating animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes floatUp {
+        to {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Fireworks
+    function triggerFirework(x, y) {
+      for (let i = 0; i < 10; i++) {
+        const dot = document.createElement("div");
+        dot.className = "firework";
+        dot.style.left = `${x}px`;
+        dot.style.top = `${y}px`;
+        dot.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        document.body.appendChild(dot);
+        setTimeout(() => dot.remove(), 800);
+      }
+    }
+
+    window.addEventListener("scroll", () => {
+      const x = window.innerWidth * Math.random();
+      const y = window.scrollY + window.innerHeight * Math.random() * 0.5;
+      triggerFirework(x, y);
+    });
+
+    document.addEventListener("click", e => {
+      triggerFirework(e.pageX, e.pageY);
+    });
+  </script>
+</body>
+</html>
